@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
-import { Todo, todos } from './todos';
+import { todos } from './todos';
+import { addTodo, generateNewTodo, getTodoById, updateTodoById } from './todos/todoHelpers';
 
 (async () => {
   const app = express();
@@ -25,7 +26,7 @@ import { Todo, todos } from './todos';
       res.status(400).send('id is required');
     }
 
-    const filteredTodos = todos.filter(todo => todo.id === parseInt(id, 10));
+    const filteredTodos = getTodoById(todos, parseInt(id, 10));
 
     if (filteredTodos && filteredTodos.length === 0) {
       return res.status(404).send('Todo is not found');
@@ -42,15 +43,8 @@ import { Todo, todos } from './todos';
     if (!name) {
       return res.status(400).send("Todo name is missing");
     }
-
-    const newTodo: Todo = {
-      id: Math.floor(Math.random() * 1000),
-      name,
-      completed: false
-    }
-
-    todos.push(newTodo);
-
+    const newTodo = generateNewTodo(name);
+    addTodo(todos, newTodo);
     res.status(201).send(newTodo);
   });
 
@@ -62,14 +56,9 @@ import { Todo, todos } from './todos';
       res.status(400).send('id is required');
     }
 
-    for (const todo of todos) {
-      if (todo.id === parseInt(id, 10)) {
-        todo.completed = !todo.completed;
-      }
-    }
-
-    const updatedTodo = todos.filter(todo => todo.id === parseInt(id, 10));
-    res.status(200).send(updatedTodo);
+    const parsedId = parseInt(id, 10);
+    updateTodoById(todos, parsedId);
+    res.status(200).send(getTodoById(todos, parsedId));
 
   });
 
