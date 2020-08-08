@@ -8,7 +8,6 @@ REST API will include "todos" resources, support the following routes:
 * ```GET /api/todos/:id```    - returns a specific todo
 * ```POST /api/todos```       - create a new todo
 * ```PUT /api/todos/:id```    - update a specific todo
-* ```DELETE /api/todos/:id``` - delete a specific todo
 
 ## Getting Started
 
