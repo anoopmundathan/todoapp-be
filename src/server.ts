@@ -1,5 +1,7 @@
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import express, { Request, Response } from 'express';
+import morgan from 'morgan';
 import { todos } from './todos';
 import { addTodo, generateNewTodo, getTodoById, updateTodoById } from './todos/todoHelpers';
 
@@ -7,7 +9,10 @@ import { addTodo, generateNewTodo, getTodoById, updateTodoById } from './todos/t
   const app = express();
   const port = process.env.PORT || 8000;
 
+  app.use(cors());
+  app.use(morgan('combined'))
   app.use(bodyParser.json());
+
 
   app.get( "/", async (req: Request, res: Response) => {
     res.status(200).send("Welcome to Todo App");
