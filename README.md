@@ -1,4 +1,4 @@
-# onthemoney-todoapp-be
+# todoapp-be
 Todo app backend api server
 
 ### Supported routes
@@ -16,8 +16,8 @@ REST API will include "todos" resources, support the following routes:
 
 ### Setup
 ```
-$ git clone https://github.com/anoopmundathan/onthemoney-todoapp-be.git
-$ cd onthemoney-todoapp-be
+$ git clone https://github.com/anoopmundathan/todoapp-be.git
+$ cd todoapp-be
 ```
 ### Install
 ```
@@ -33,4 +33,4 @@ http://localhost:8000
 ```
 
 ## Frontend
-For the corresponding F/E app head over to - https://github.com/anoopmundathan/onthemoney-todoapp-fe.git
+For the corresponding F/E app head over to - https://github.com/anoopmundathan/todoapp-fe.git
