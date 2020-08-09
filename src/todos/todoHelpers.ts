@@ -1,6 +1,6 @@
 import { Todo } from "../todos";
 
-const generateId = () => Math.floor(Math.random() * 1000);
+const generateId = () => Math.floor(Math.random() * 10000);
 
 export const generateNewTodo = (name: string): Todo => ({
     id: generateId(),
